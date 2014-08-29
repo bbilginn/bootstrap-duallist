@@ -91,7 +91,6 @@
             </div>
         </div>
 
-
     </div>
 
 
@@ -124,7 +123,7 @@
                     actives.remove();
                 }
             });
-            $('.selector').click(function () {
+            $('.dual-list .selector').click(function () {
                 var $checkBox = $(this);
                 if (!$checkBox.hasClass('selected')) {
                     $checkBox.addClass('selected').closest('.well').find('ul li:not(.active)').addClass('active');
