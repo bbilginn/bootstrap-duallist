@@ -5,14 +5,15 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
     <!--<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />-->
     <style>
-        [data-first], [data-second] {
+        .list-left li, .list-right li {
             cursor: pointer;
         }
 
-        [data-arrows] {
+        .list-arrows {
             padding-top: 100px;
         }
-            [data-arrows] button {
+
+            .list-arrows button {
                 margin-bottom: 20px;
             }
     </style>
@@ -27,49 +28,46 @@
     <div class="row">
 
 
-        <div class="col-md-5 text-right">
-
-
-            <button type="button" class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-                <span class="glyphicon glyphicon-chevron-right"></span>
-            </button>
-            <ul data-first class="list-group">
-                <li class="list-group-item active">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
-
+        <div class="list-left col-md-5">
+            <div class="well text-right">
+                <button class="btn btn-success btn-sm">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </button>
+                <ul class="list-group">
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Morbi leo risus</li>
+                    <li class="list-group-item">Porta ac consectetur ac</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                </ul>
+            </div>
         </div>
 
-        <div data-arrows class="col-md-1 text-center">
-
-            <button type="button" class="btn btn-default btn-sm">
+        <div class="list-arrows col-md-1 text-center">
+            <button class="btn btn-default btn-sm move-left">
                 <span class="glyphicon glyphicon-chevron-left"></span>
             </button>
 
-            <button type="button" class="btn btn-default btn-sm">
+            <button class="btn btn-default btn-sm move-right">
                 <span class="glyphicon glyphicon-chevron-right"></span>
             </button>
-
         </div>
 
-        <div data-second class="col-md-5">
-
-            <button type="button" class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-                <span class="glyphicon glyphicon-chevron-left"></span>
-            </button>
-            <ul class="list-group">
-                <li class="list-group-item active">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
-
+        <div class="list-right col-md-5">
+            <div class="well">
+                <button class="btn btn-success btn-sm">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </button>
+                <ul class="list-group">
+                    <li class="list-group-item active">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Morbi leo risus</li>
+                    <li class="list-group-item">Porta ac consectetur ac</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                </ul>
+            </div>
         </div>
 
 
@@ -102,9 +100,23 @@
 
         $(function () {
 
-            $('.list-group .list-group-item').click(function () {
+            $('body').on('click', '.list-group .list-group-item', function () {
                 $(this).toggleClass('active');
             });
+
+            $('.list-arrows button').click(function () {
+                var $button = $(this), actives = '';
+                if ($button.hasClass('move-left')) {
+                    actives = $('.list-right ul li.active');
+                    actives.clone().appendTo('.list-left ul');
+                    actives.remove();
+                } else if ($button.hasClass('move-right')) {
+                    actives = $('.list-left ul li.active');
+                    actives.clone().appendTo('.list-right ul');
+                    actives.remove();
+                }
+            });
+
 
         });
 
