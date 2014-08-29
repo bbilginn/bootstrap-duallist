@@ -29,10 +29,10 @@
 
 
 
-    <div class="row dual-list">
+    <div class="row">
 
 
-        <div class="list-left col-md-5">
+        <div class="dual-list list-left col-md-5">
             <div class="well text-right">
                 <div class="row">
                     <div class="col-md-9">
@@ -41,7 +41,7 @@
                             <input type="text" name="SearchDualList" class="form-control" placeholder="search" />
                         </div>
                     </div>
-                    <div class="col-md-3"><label>select all <input type="checkbox" class="select-all-left" /></label></div>
+                    <div class="col-md-3"><label>select all <input type="checkbox" class="select-all" /></label></div>
                 </div>
                 <ul class="list-group">
                     <li class="list-group-item">Cras justo odio</li>
@@ -63,10 +63,10 @@
             </button>
         </div>
 
-        <div class="list-right col-md-5">
+        <div class="dual-list list-right col-md-5">
             <div class="well">
                 <div class="row">
-                    <div class="col-md-3"><label><input type="checkbox" class="select-all-right" /> select all</label></div>
+                    <div class="col-md-3"><label><input type="checkbox" class="select-all" /> select all</label></div>
                     <div class="col-md-9">
                         <div class="input-group">
                             <input type="text" name="SearchDualList" class="form-control" placeholder="search" />
@@ -94,18 +94,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -117,7 +105,6 @@
             $('body').on('click', '.list-group .list-group-item', function () {
                 $(this).toggleClass('active');
             });
-
             $('.list-arrows button').click(function () {
                 var $button = $(this), actives = '';
                 if ($button.hasClass('move-left')) {
@@ -130,14 +117,26 @@
                     actives.remove();
                 }
             });
-
-            $('.select-all-left, .select-all-right').click(function () {
+            $('.select-all').click(function () {
                 var $checkBox = $(this);
                 if ($checkBox.is(':checked')) {
                     $checkBox.closest('.well').find('ul li:not(.active)').addClass('active');
                 } else {
                     $checkBox.closest('.well').find('ul li.active').removeClass('active');
                 }
+            });
+            $('[name="SearchDualList"]').keyup(function (e) {
+                /* Ignore tab key */
+                var code = e.keyCode || e.which;
+                if (code == '9') return;
+                var searchBox = $(this);
+                if (code == '27') searchBox.val(null);
+                var $rows = $('.list-group li');
+                var val = $.trim(searchBox.val()).replace(/ +/g, ' ').toLowerCase();
+                $rows.show().filter(function () {
+                    var text = searchBox.text().replace(/\s+/g, ' ').toLowerCase();
+                    return !~text.indexOf(val);
+                }).hide();
             });
 
         });
