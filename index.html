@@ -4,7 +4,11 @@
     <title>Page Designer</title>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
-
+    <style>
+        [data-first], [data-second] {
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body class="container">
     <br />
@@ -17,27 +21,31 @@
 
 
         <div class="col-md-5">
-            <div class="list-group">
-                <a href="#" class="list-group-item active">Cras justo odio</a>
-                <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-                <a href="#" class="list-group-item">Morbi leo risus</a>
-                <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-                <a href="#" class="list-group-item">Vestibulum at eros</a>
-            </div>
+
+            <ul data-first class="list-group">
+                <li class="list-group-item active">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetur ac</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
+
         </div>
 
         <div class="col-md-1 text-center">
             arrows
         </div>
 
-        <div class="col-md-5">
-            <div class="list-group">
-                <a href="#" class="list-group-item active">Cras justo odio</a>
-                <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-                <a href="#" class="list-group-item">Morbi leo risus</a>
-                <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-                <a href="#" class="list-group-item">Vestibulum at eros</a>
-            </div>
+        <div data-second class="col-md-5">
+
+            <ul class="list-group">
+                <li class="list-group-item active">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetur ac</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
+
         </div>
 
 
@@ -69,6 +77,10 @@
     <script>
 
         $(function () {
+
+            $('.list-group .list-group-item').click(function () {
+                $(this).toggleClass('active');
+            });
 
         });
 
