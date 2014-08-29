@@ -30,10 +30,10 @@
 
         <div class="list-left col-md-5">
             <div class="well text-right">
-                <button class="btn btn-success btn-sm">
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                </button>
+                <div>
+                    <label>select all <input type="checkbox" class="select-all-left" /></label>
+                    <input type="text" name="SearchDualList" class="form-control" placeholder="search" />
+                </div>
                 <ul class="list-group">
                     <li class="list-group-item">Cras justo odio</li>
                     <li class="list-group-item">Dapibus ac facilisis in</li>
@@ -56,10 +56,10 @@
 
         <div class="list-right col-md-5">
             <div class="well">
-                <button class="btn btn-success btn-sm">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                </button>
+                <div>
+                    <label><input type="checkbox" class="select-all-right" /> select all</label>
+                    <input type="text" name="SearchDualList" class="form-control" placeholder="search" />
+                </div>
                 <ul class="list-group">
                     <li class="list-group-item active">Cras justo odio</li>
                     <li class="list-group-item">Dapibus ac facilisis in</li>
@@ -117,6 +117,14 @@
                 }
             });
 
+            $('.select-all-left, .select-all-right').click(function () {
+                var $checkBox = $(this);
+                if ($checkBox.is(':checked')) {
+                    $checkBox.closest('.well').find('ul li:not(.active)').addClass('active');
+                } else {
+                    $checkBox.closest('.well').find('ul li.active').removeClass('active');
+                }
+            });
 
         });
 
