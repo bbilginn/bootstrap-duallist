@@ -3,11 +3,18 @@
 <head>
     <title>Page Designer</title>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+    <!--<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />-->
     <style>
         [data-first], [data-second] {
             cursor: pointer;
         }
+
+        [data-arrows] {
+            padding-top: 100px;
+        }
+            [data-arrows] button {
+                margin-bottom: 20px;
+            }
     </style>
 </head>
 <body class="container">
@@ -20,8 +27,13 @@
     <div class="row">
 
 
-        <div class="col-md-5">
+        <div class="col-md-5 text-right">
 
+
+            <button type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </button>
             <ul data-first class="list-group">
                 <li class="list-group-item active">Cras justo odio</li>
                 <li class="list-group-item">Dapibus ac facilisis in</li>
@@ -32,12 +44,24 @@
 
         </div>
 
-        <div class="col-md-1 text-center">
-            arrows
+        <div data-arrows class="col-md-1 text-center">
+
+            <button type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </button>
+
+            <button type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </button>
+
         </div>
 
         <div data-second class="col-md-5">
 
+            <button type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </button>
             <ul class="list-group">
                 <li class="list-group-item active">Cras justo odio</li>
                 <li class="list-group-item">Dapibus ac facilisis in</li>
