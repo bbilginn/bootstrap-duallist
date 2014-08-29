@@ -5,6 +5,10 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
     <!--<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />-->
     <style>
+        .dual-list .list-group {
+            margin-top: 8px;
+        }
+
         .list-left li, .list-right li {
             cursor: pointer;
         }
@@ -25,17 +29,19 @@
 
 
 
-    <div class="row">
+    <div class="row dual-list">
 
 
         <div class="list-left col-md-5">
             <div class="well text-right">
-                <div>
-                    <label>select all <input type="checkbox" class="select-all-left" /></label>
-                    <div class="input-group">
-                        <span class="input-group-addon glyphicon glyphicon-search"></span>
-                        <input type="text" name="SearchDualList" class="form-control" placeholder="search" />
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon glyphicon glyphicon-search"></span>
+                            <input type="text" name="SearchDualList" class="form-control" placeholder="search" />
+                        </div>
                     </div>
+                    <div class="col-md-3"><label>select all <input type="checkbox" class="select-all-left" /></label></div>
                 </div>
                 <ul class="list-group">
                     <li class="list-group-item">Cras justo odio</li>
@@ -59,11 +65,13 @@
 
         <div class="list-right col-md-5">
             <div class="well">
-                <div>
-                    <label><input type="checkbox" class="select-all-right" /> select all</label>
-                    <div class="input-group">
-                        <input type="text" name="SearchDualList" class="form-control" placeholder="search" />
-                        <span class="input-group-addon glyphicon glyphicon-search"></span>
+                <div class="row">
+                    <div class="col-md-3"><label><input type="checkbox" class="select-all-right" /> select all</label></div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <input type="text" name="SearchDualList" class="form-control" placeholder="search" />
+                            <span class="input-group-addon glyphicon glyphicon-search"></span>
+                        </div>
                     </div>
                 </div>
                 <ul class="list-group">
